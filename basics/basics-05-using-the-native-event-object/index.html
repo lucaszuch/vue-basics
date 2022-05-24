@@ -18,15 +18,14 @@
     </header>
     <section id="events">
       <h2>Events in Action</h2>
-      <button v-on:click="addCounter(5)">Add</button>
-      <button v-on:click="removeCounter(5)" :disabled="counter == 0">Remove</button>
+      <button @click="add(10)">Add 10</button>
+      <button v-on:click="reduce(5)">Subtract 5</button>
       <p>Result: {{ counter }}</p>
-      <input type="text" v-on:input="setName($e, 'Zuchinalli')" />
-      <p>User name: {{ userName }}</p>
-      <form v-on:submit.prevent="submitForm">
-        <input type="text" v-on:input="setMessage" />
-        <button>Submit</button>
-      </form>
+      <!--<input type="text" v-bind:value="name" v-on:inpu="setName($event, 'Schwarzmüller')"/>-->
+      <input type="text" v-model="name"/> <!-- 2 way binding -->
+      <input type="text" v-model="lastName"/> <!-- 2 way binding -->
+      <button type="button" v-on:click="resetInput()">Reset Input</button>
+      <p>Your Name: {{ fullName }}</p>
     </section>
   </body>
 </html>

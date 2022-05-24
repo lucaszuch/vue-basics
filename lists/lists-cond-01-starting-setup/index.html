@@ -14,19 +14,18 @@
   </head>
   <body>
     <header>
-      <h1>Vue Events</h1>
+      <h1>Vue Course Goals</h1>
     </header>
-    <section id="events">
-      <h2>Events in Action</h2>
-      <button v-on:click="addCounter(5)">Add</button>
-      <button v-on:click="removeCounter(5)" :disabled="counter == 0">Remove</button>
-      <p>Result: {{ counter }}</p>
-      <input type="text" v-on:input="setName($e, 'Zuchinalli')" />
-      <p>User name: {{ userName }}</p>
-      <form v-on:submit.prevent="submitForm">
-        <input type="text" v-on:input="setMessage" />
-        <button>Submit</button>
-      </form>
+    <section id="user-goals">
+      <h2>My course goals</h2>
+      <input v-model="enteredValue" type="text" />
+      <button @click="addGoal">Add Goal</button>
+      <p v-if="goals == ''">No goals have been added yet - please start adding some!</p>
+      <ul v-else>
+        <li v-for="(goal, index) in goals" @click="removeGoal(index)" :key="goal">
+          {{ goal }} - {{ index }}
+        </li>
+      </ul>
     </section>
   </body>
 </html>

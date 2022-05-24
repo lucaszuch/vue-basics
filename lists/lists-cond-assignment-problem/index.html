@@ -14,19 +14,18 @@
   </head>
   <body>
     <header>
-      <h1>Vue Events</h1>
+      <h1>Vue Lists and Conditional Content</h1>
     </header>
-    <section id="events">
-      <h2>Events in Action</h2>
-      <button v-on:click="addCounter(5)">Add</button>
-      <button v-on:click="removeCounter(5)" :disabled="counter == 0">Remove</button>
-      <p>Result: {{ counter }}</p>
-      <input type="text" v-on:input="setName($e, 'Zuchinalli')" />
-      <p>User name: {{ userName }}</p>
-      <form v-on:submit.prevent="submitForm">
-        <input type="text" v-on:input="setMessage" />
-        <button>Submit</button>
-      </form>
+    <section id="assignment">
+      <h2>Assignment</h2>
+      <input v-model="enteredTask" type="text">
+      <button @click="addTask()">Add Task</button>
+      <ul v-show="displayList">
+        <li v-for="(task, index) in tasks" @click="removeTask(index)">
+          {{ task }}
+        </li>
+      </ul>
+      <button @click="toggleList">{{ buttonText }} List</button>
     </section>
   </body>
 </html>
