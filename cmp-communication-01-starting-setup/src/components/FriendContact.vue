@@ -13,6 +13,7 @@
         {{ emailAddress }}
       </li>
     </ul>
+    <button @click="deleteContact">Delete</button>
   </li>
 </template>
 
@@ -44,16 +45,7 @@ export default {
       // }
     }
   },
-  emits: {
-    'toggle-favorite': function(id) {
-      if(id) {
-        return true;
-      } else {
-        console.error('Missing id');
-        return false;
-      }
-    }
-  },
+  emits: ['toggle-favorite', 'delete-contact'],
   data() {
     return {
       detailsAreVisible: false,
@@ -70,6 +62,9 @@ export default {
       // } else {
       //   this.friendIsFavorite = 1;
       // }
+    },
+    deleteContact() {
+      this.$emit('delete-contact', this.id);
     }
   }
 };

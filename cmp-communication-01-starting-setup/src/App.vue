@@ -13,7 +13,8 @@
         :phone-number="friend.phone"
         :email-address="friend.email"
         :is-favorite="friend.isFavorite"
-        @toggle-favorite="toggleFavStatus"
+        @toggle-favorite="toggleFavoriteHandler"
+        @delete-contact="deleteContactHandler"
       ></friend-contact>
     </ul>
   </section>
@@ -44,9 +45,8 @@ export default {
     };
   },
   methods: {
-    toggleFavStatus(friendId) {
+    toggleFavoriteHandler(friendId) {
       let friend = this.friends.find((item) => item.id == friendId);
-      console.log(friend)
       friend.isFavorite = !friend.isFavorite;
     },
     addContactHandler(contact) {
@@ -59,6 +59,9 @@ export default {
       }
 
       this.friends.push(newEntry);
+    },
+    deleteContactHandler(friendId) {
+      this.friends = this.friends.filter(item => item.id !== friendId);
     }
   }
 };

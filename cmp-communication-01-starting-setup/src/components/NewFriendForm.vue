@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="submitEntry">
+    <form @submit.prevent="addContact">
         <div>
             <label>Name: </label>
             <input type="text" v-model="enteredName"/>
@@ -38,7 +38,7 @@ export default {
         }
     },
     methods: {
-        submitEntry() {
+        addContact() {
             if(this.validateData) {
                 this.$emit(
                     'add-contact',
